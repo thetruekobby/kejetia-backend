@@ -11,7 +11,7 @@ const customMessages = {
 const sendResponse = ({ status = 200, message, res, data }: SendResponsePayload) => {
   const statusMessage = status.toString().startsWith("2") ? "success" : "error"
 
-  res.status(200).json({
+  res.status(status).json({
     code: statusMessage === "success" ? 0 : 1,
     message: message || customMessages[status as keyof typeof customMessages] ||  statusMessage,
     data,

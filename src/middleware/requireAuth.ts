@@ -1,21 +1,17 @@
 import { RequestHandler } from "express"
+import sendResponse from "../utils/response"
+import { verifyToken } from "../utils/jwt"
 
 
 const requireAuth: RequestHandler = async (req, res, next) => {
-  const { authorization } = req.headers
-  if (!authorization) {
-    res.status(401).json({ code: 1, message: "Authorization token required" })
-  }
-
-  const token = authorization?.split(" ")[1]
-
   try {
-
-
+    const { authorization } = req.headers
+    if (!authorization) throw new Error()    
+    const token = authorization?.split(" ")[1]
+    verifyToken(token)
     next()
   } catch (error) {
-    console.log(error)
-    res.status(401).json({ code: 1, message: "Authorization not verified" })
+    sendResponse({ res, status: 401 })
   }
 }
 
