@@ -9,8 +9,11 @@
     "outDir": "./build",
     "rootDir": "./src",
     "sourceMap": true,
-    "lib": ["esnext"]
+    "lib": ["esnext"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/schemas/index.js"],
   "exclude": ["node_modules"]
 }
