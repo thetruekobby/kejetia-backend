@@ -3,8 +3,8 @@ import cors from "cors"
 import authRouter from "./routers/authRouter"
 import productRouter from "./routers/productRouter"
 import requireAuth from "./middleware/requireAuth"
-import dotenv from "dotenv"
-dotenv.config()
+// import dotenv from "dotenv"
+// dotenv.config()
 
 const app = express()
 app.use(express.json())

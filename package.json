@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently \"tsc -w\"  \"node --watch --env-file .env ./build\"",
     "build": "pnpm i && tsc",
-    "start":"node ./build"
+    "start": "node --env-file .env ./build"
   },
   "keywords": [],
   "author": "",
