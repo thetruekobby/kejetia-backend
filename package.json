@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"tsc -w\"  \"node  --watch --env-file .env ./build\"",
+    "build": "concurrently \"tsc -w\"  \"node  --watch ./build\"",
     "dev:ts": "tsc -w",
     "dev:js": "nodemon --env-file .env dist"
   },
