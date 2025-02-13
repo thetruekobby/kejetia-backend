@@ -20,22 +20,24 @@ model User {
   imageUrl  String?
   order     Order[]
   product   Product[]
+  wishlist  Wishlist?
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
+  id          Int        @id @default(autoincrement())
   name        String
   price       Float
   image       Image[]
   description String?
   stockLevel  Int
   order       Order[]
-  seller      User     @relation(fields: [sellerId], references: [id])
+  seller      User       @relation(fields: [sellerId], references: [id])
   sellerId    String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  wishlist    Wishlist[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 }
 
 model Image {
@@ -51,4 +53,11 @@ model Order {
   customer   User      @relation(fields: [customerId], references: [id], onDelete: Cascade)
   customerId String
   product    Product[]
+}
+
+model Wishlist {
+  id      String    @id @default(uuid())
+  userId  String    @unique
+  user    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product Product[]
 }

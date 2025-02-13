@@ -60,6 +60,7 @@ export const addProduct: RequestHandler = async (req: RequestWithUser, res) => {
             imageUrl: `https://${bucketName}.s3.${bucketRegion}.amazonaws.com/${file.originalname}`,
           },
         })
+        
       })
     )
     sendResponse({ res, status: 201 })
