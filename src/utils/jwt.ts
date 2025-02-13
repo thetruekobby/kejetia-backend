@@ -9,12 +9,12 @@ export const createToken = (payload: any) => {
 
 export const verifyToken = (token: string) => {
   try {
-    return jwt.verify(token, process.env.SECRET as string) as DecodedToken
+    //TODO remove ignoreExpiration flag
+    return jwt.verify(token, process.env.SECRET as string, { ignoreExpiration: true }) as DecodedToken
   } catch (error) {
     return null
   }
 }
-
 
 export interface DecodedToken extends JwtPayload {
   email: string
