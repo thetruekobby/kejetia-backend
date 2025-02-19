@@ -11,7 +11,7 @@ jobs:
       - name: Checkout source Code
         uses: actions/checkout@v2
       - name: Login to docker hub
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p "${{ secrets.DOCKER_PASSWORD }}"
       - name: Build docker image
         run: docker build  -t kejetia-backend .
       - name: Push docker image
