@@ -15,7 +15,7 @@ jobs:
       - name: Build docker image
         run: docker build  -t kejetia-backend .
       - name: Push docker image
-        run: docker push kejetia-backend:latest
+        run: docker push thetruekobby/kejetia-backend:latest
 
   deploy:
     needs: build
