@@ -13,20 +13,20 @@ jobs:
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p "${{ secrets.DOCKER_PASSWORD }}"
       - name: Build docker image
-        run: docker build  -t kejetia-backend .
+        run: docker build  -t thetruekobby/kejetia-backend .
       - name: Push docker image
-        run: docker push thetruekobby/kejetia-backend:latest
+        run: docker push thetruekobby/kejetia-backend
 
   deploy:
     needs: build
     runs-on: [aws-ec2]
     steps:
       - name: Pull image from dockerhub 
-        run: docker pull kejetia-backend:latest
+        run: docker pull kejetia-backend
       - name: Delete existing container
         run: docker rm -f kejetia-backend-container
       - name: run docker container
-        run: docker run -d  -p 5000:5000 --name kejetia-backend-container  kejetia-backend
+        run: docker run -d  -p 5000:5000 --name kejetia-backend-container  thetruekobby/kejetia-backend
 
 
 
