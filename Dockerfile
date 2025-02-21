@@ -4,14 +4,15 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install -g pnpm
+# RUN npm install -g pnpm
 
-RUN pnpm install
+RUN npm install
 
 COPY . .
 
-RUN pnpm build
+# RUN  pnpm prisma generate && pnpm exec tsc
+RUN  npx prisma generate && npx tsc
 
 EXPOSE 5000
 
-CMD ["pnpm", "start"]
+CMD ["npm", "start"]
