@@ -10,7 +10,8 @@
     "rootDir": "./src",
     "sourceMap": true,
     "lib": ["esnext"],
+    "resolveJsonModule": true
   },
-  "include": ["src/**/*.ts", "src/schemas/index.js"],
+  "include": ["src/**/*.ts", "src/schemas/index.js", "src/swagger-generate.js"],
   "exclude": ["node_modules"]
 }

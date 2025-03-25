@@ -11,7 +11,7 @@ RUN npm install
 COPY . .
 
 # RUN  pnpm prisma generate && pnpm exec tsc
-RUN  npx prisma generate && npx tsc
+RUN  npx prisma generate && node ./src/swagger-generate.js && npx tsc
 
 EXPOSE 5000
 

@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  kejetia-backend:
+    build: ./
+    image: temp-kejetia-backend
+    container_name: temp-kejetia-backend_container
+    restart: unless-stopped    
+    ports:
+      - 5000:5000
+

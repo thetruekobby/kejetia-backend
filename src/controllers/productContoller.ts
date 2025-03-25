@@ -36,7 +36,6 @@ export const getProducts: RequestHandler = async (req, res) => {
   }
 }
 export const addProduct: RequestHandler = async (req: RequestWithUser, res) => {
-  console.log(req.files)
   try {
     if (!req.files) return sendResponse({ res, status: 400, message: "No images of the product uploaded" })
     const error = validate(addProductSchema, req.body)
